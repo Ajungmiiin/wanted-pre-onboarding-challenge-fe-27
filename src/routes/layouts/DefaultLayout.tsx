@@ -3,9 +3,9 @@ import { Outlet } from 'react-router-dom';
 const DefaultLayout = () => {
   return (
     <>
-      <header></header>
-      <main>{<Outlet />}</main>
-      <footer></footer>
+      <main className="h-screen flex items-center justify-center">
+        {<Outlet />}
+      </main>
     </>
   );
 };

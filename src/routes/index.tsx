@@ -1,21 +1,35 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
 import DefaultLayout from './layouts/DefaultLayout';
 
 import AuthPage from './pages/AuthPage';
 import Home from './pages/Home';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import TodoDetail from './pages/TodoDetail';
+import AddTodo from './pages/AddTodo';
 
-const queryClient = new QueryClient();
+export const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <DefaultLayout />,
+    id: 'loot',
     children: [
       {
-        index: true,
+        path: '/',
         element: <Home />,
+        children: [
+          {
+            path: '/:id',
+            element: <TodoDetail />,
+          },
+          {
+            path: 'add',
+            element: <AddTodo />,
+          },
+        ],
       },
       {
         path: '/auth',

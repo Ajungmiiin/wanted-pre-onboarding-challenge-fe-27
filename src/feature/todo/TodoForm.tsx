@@ -7,6 +7,7 @@ interface todoFormProps {
   updateTitle?: string;
   updateContent?: string;
   isPending?: boolean;
+  closeEdit?: React.Dispatch<boolean>;
 }
 
 const TodoForm = ({
@@ -14,6 +15,7 @@ const TodoForm = ({
   updateTitle,
   updateContent,
   isPending,
+  closeEdit,
 }: todoFormProps) => {
   const navigate = useNavigate();
 
@@ -29,6 +31,10 @@ const TodoForm = ({
   };
 
   const closeForm = () => {
+    if (closeEdit) {
+      return closeEdit(false);
+    }
+
     navigate('/');
   };
 

@@ -81,6 +81,7 @@ const TodoDetail = () => {
           updateTitle={todo!.title}
           updateContent={todo!.content}
           isPending={isUpdatePending}
+          closeEdit={setEdit}
         />
       )}
     </div>
